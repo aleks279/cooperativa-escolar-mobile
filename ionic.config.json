@@ -1,0 +1,8 @@
+{
+  "name": "cooperativa-escolar-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "pro_id": "e582690d"
+}
