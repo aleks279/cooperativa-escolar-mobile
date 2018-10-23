@@ -2,7 +2,7 @@ export class Article {
   title: string;
   author: string;
   sections: Section[] = new Array<Section>();
-  open: boolean;
+  expanded: boolean = false;
 }
 
 export class Section {

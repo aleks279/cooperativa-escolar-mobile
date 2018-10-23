@@ -33,7 +33,14 @@ export class NewsPage {
     )
   }
 
-  toggleSection(i) {
-    this.news[i].open = !this.news[i].open;
+  expandItem(article) {
+    this.news.map((articles) => {
+      if (article == articles) {
+        articles.expanded = !articles.expanded;
+      } else {
+        articles.expanded = false;
+      }
+      return articles;
+    });
   }
 }

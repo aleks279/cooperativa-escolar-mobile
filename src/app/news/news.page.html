@@ -11,10 +11,18 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let article of news">
-      <ion-icon ios="ios-paper" md="md-paper"></ion-icon>
-      {{article.title}}
+    <ion-item detail-none (click)="expandItem(article)" *ngFor="let article of news">
+      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle" *ngIf="!article.expanded"></ion-icon>
+      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropdown-circle" *ngIf="article.expanded"></ion-icon>
+      <p *ngIf="!article.expanded">{{ article.title }}</p>
+      <div *ngIf="article.expanded">
+        <h1 *ngIf="article.expanded">{{ article.title }}</h1>
+        <section detail-none *ngFor="let section of article.sections">
+          <h3>{{ section.header }}</h3>
+          <ion-img [src]="section.image_url"></ion-img>
+          {{ section.body }}
+        </section>
+      </div>
     </ion-item>
   </ion-list>
-
 </ion-content>
