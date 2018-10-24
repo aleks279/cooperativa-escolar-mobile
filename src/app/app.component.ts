@@ -20,6 +20,10 @@ export class AppComponent {
       url: '/products',
       icon: 'list'
     },
+    {
+      title: 'Config',
+      icon: 'settings'
+    }
   ];
 
   constructor(
