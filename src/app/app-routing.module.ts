@@ -17,7 +17,8 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: './products/products.module#ProductsPageModule'
-  }
+  },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' }
 ];
 
 @NgModule({

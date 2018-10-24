@@ -22,6 +22,7 @@ export class AppComponent {
     },
     {
       title: 'Config',
+      url: '/settings',
       icon: 'settings'
     }
   ];
