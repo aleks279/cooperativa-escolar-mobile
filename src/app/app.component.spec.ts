@@ -50,8 +50,17 @@ describe('AppComponent', () => {
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(2);
-    expect(menuItems[0].textContent).toContain('Home');
-    expect(menuItems[1].textContent).toContain('List');
+    expect(menuItems[0].textContent).toContain('Noticias');
+    expect(menuItems[1].textContent).toContain('Productos Disponibles');
+  });
+  it('should have name icons', async () => {
+    const fixture = await TestBed.createComponent(AppComponent);
+    await fixture.detectChanges();
+    const app = fixture.nativeElement;
+    const menuItems = app.querySelectorAll('ion-icon');
+    expect(menuItems.length).toEqual(2);
+    expect(menuItems[0].name).toContain('home');
+    expect(menuItems[1].name).toContain('list');
   });
 
   it('should have urls', async () => {
@@ -60,8 +69,8 @@ describe('AppComponent', () => {
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-item');
     expect(menuItems.length).toEqual(2);
-    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home');
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/list');
+    expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/news');
+    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/products');
   });
 
 });
