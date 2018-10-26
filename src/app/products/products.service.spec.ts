@@ -1,10 +1,10 @@
 import { ProductsService } from './products.service';
 import { TestBed, async, inject } from '@angular/core/testing';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient ,HttpHandler} from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe(`ProductService`, () => {
-  let chttp:HttpClient;
+  /*let chttp:HttpClient;
   let p: ProductsService = new ProductsService(chttp);
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -13,9 +13,15 @@ describe(`ProductService`, () => {
         HttpClientTestingModule
       ]
     });
+  });*/
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [ProductsService,HttpClient,HttpHandler]
+    });
   });
 
-  it(`should issue a request`,
+  /*it(`should issue a request`,
     async(
       inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController) => {
       	var url = p.apiUrl;
@@ -28,6 +34,16 @@ describe(`ProductService`, () => {
         });
       })
     )
-  );
+  );*/
+
+  it('should be created',inject([ProductsService,HttpClient,HttpHandler],(service: ProductsService) =>{
+    expect(service).toBeTruthy();
+  }));
+  it('should have getProducts',inject([ProductsService,HttpClient,HttpHandler],(service: ProductsService) =>{
+    expect(service.getProducts).toBeTruthy();
+  }));
+  it('should have appiUrl',inject([ProductsService,HttpClient,HttpHandler],(service: ProductsService) =>{
+    expect(service.apiUrl).toBeTruthy();
+  }));
 
 });
