@@ -1,7 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-
+import { ProductsService } from './products.service';
 import { ProductsPage } from './products.page';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 describe('ProductsPage', () => {
   let component: ProductsPage;
@@ -10,8 +11,9 @@ describe('ProductsPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [],
-      providers: [ProductsPage],
+      imports:[],
+      declarations: [ProductsPage],
+      providers: [ProductsService,HttpClient,HttpClientModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
@@ -26,10 +28,11 @@ describe('ProductsPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  /*
-  it('should have more than 0  elements products', () => {
+
+  it('should have a products of 10 elements', () => {
     productsPage = fixture.nativeElement;
     const items = productsPage.querySelectorAll('ion-item');
-    expect(items.length).toEqual(12);
-  });*/
+    expect(items.length).toEqual(10);
+  });
+
 });
