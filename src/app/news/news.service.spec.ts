@@ -4,7 +4,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe(`NewsService`, () => {
-
+  let chttp:HttpClient;
+  let n: NewsService = new NewsService(chttp);
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -17,8 +18,8 @@ describe(`NewsService`, () => {
   it(`should issue a request`,
     async(
       inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController) => {
-
-        http.get('http://localhost:3000/api/v1/articles').subscribe();
+        var url = n.apiUrl;
+        http.get(`${url}api/v1/articles`).subscribe();
 
         backend.expectOne({
           url: 'http://localhost:3000/api/v1/articles',
