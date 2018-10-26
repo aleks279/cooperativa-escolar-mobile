@@ -17,7 +17,7 @@ describe(`ProductService`, () => {
 
   it(`should issue a request`,
     async(
-      inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController,s:ProductsService) => {
+      inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController) => {
       	var url = p.apiUrl;
         http.get(`${url}api/v1/products`).subscribe();
 
