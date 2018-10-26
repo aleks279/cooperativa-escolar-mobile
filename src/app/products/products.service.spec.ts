@@ -4,7 +4,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe(`ProductService`, () => {
-
+  let chttp:HttpClient;
+  let p: ProductsService = new ProductsService(chttp);
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -16,9 +17,9 @@ describe(`ProductService`, () => {
 
   it(`should issue a request`,
     async(
-      inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController) => {
-      	
-        http.get('http://localhost:3000/api/v1/products').subscribe();
+      inject([HttpClient, HttpTestingController], (http: HttpClient, backend: HttpTestingController,s:ProductsService) => {
+      	var url = p.apiUrl;
+        http.get(`${url}api/v1/products`).subscribe();
 
 
         backend.expectOne({
