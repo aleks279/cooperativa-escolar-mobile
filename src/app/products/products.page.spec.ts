@@ -26,10 +26,9 @@ describe('ProductsPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a products of 10 elements', () => {
+  it('should have more than 0  elements products', () => {
     productsPage = fixture.nativeElement;
     const items = productsPage.querySelectorAll('ion-item');
-    expect(items.length).toEqual(10);
+    expect(items.length).toEqual(12);
   });
-
 });
